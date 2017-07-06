@@ -1,2 +1,2 @@
 # clj-sendgrid
-A wrapper to the Sendgrid API v3
+A Clojure Library for the  Sendgrid API v3
