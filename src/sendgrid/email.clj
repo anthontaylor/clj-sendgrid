@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 (ns sendgrid.email
   (:require [clj-http.client :as client]
             [clojure.data.json :refer [write-str]]
@@ -15,3 +16,6 @@
                  :headers {:authorization api-token}
                  :body (write-str (merge json-body attachments))}]
     (client/post (str url "mail/send") request)))
+=======
+(ns sendgrid.email)
+>>>>>>> Basic request

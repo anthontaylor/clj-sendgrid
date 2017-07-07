@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 (ns sendgrid.stats
   (:require [clj-http.client :as client]
             [clojure.data.json :refer [write-str]]
@@ -13,3 +14,6 @@
    (client/get (str url "suppression/" name) (merge {:headers {:authorization api-token
                                                                :content-type :json}}
                                                     {:query-params params}))))
+=======
+(ns sendgrid.stats)
+>>>>>>> Basic request
