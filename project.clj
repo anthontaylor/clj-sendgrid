@@ -9,8 +9,4 @@
                  [cheshire "5.7.1"]
                  [clj-http "3.6.1"]
                  [org.clojure/data.json "0.2.6"]]
-<<<<<<< HEAD
-=======
-                 [clj-http "3.6.1"]]
->>>>>>> Basic request
   :plugins [[lein-environ "1.1.0"]])
