@@ -4,7 +4,7 @@
             [sendgrid.util :refer [url]]
             [environ.core :refer [env]]))
 
-(defn invalid-email<s
+(defn invalid-emails
   [{api-token :api-token}]
   (client/get (str url "suppression/invalid_emails")
               {:headers {:authorization api-token
