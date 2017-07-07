@@ -1,6 +1,6 @@
 (ns sendgrid.util
   (:require [clj-http.client :as client]
-            [clojure.data.json :as json]
+            [clojure.data.json :refer [write-str]]
             [environ.core :refer [env]]))
 
 (def test-map {:from (env :from-email)
@@ -19,8 +19,8 @@
   (let [url "https://api.sendgrid.com/v3/mail/send"]
     (client/post url {:content-type :json
                       :headers {:authorization (env :api-token)}
-                      :body (json/write-str {:personalizations [{:to [{"email" to}]}]
-                                             :from    {"email" from}
-                                             :subject  subject
-                                             :content [{:type "text/html"
-                                                        :value  message}]})})))
+                      :body (write-str {:personalizations [{:to [{"email" to}]}]
+                                        :from    {"email" from}
+                                        :subject  subject
+                                        :content [{:type "text/html"
+                                                   :value  message}]})})))
