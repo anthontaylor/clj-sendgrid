@@ -1,6 +1,26 @@
 (ns sendgrid.util
-  (:require [clj-http.client :as client]))
+  (:require [clj-http.client :as client]
+            [clojure.data.json :as json]
+            [environ.core :refer [env]]))
 
-;;This works
-(def API_TOKEN "Bearer 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")
-(client/get "https://api.sendgrid.com/v3/templates" {:headers {:authorization API_TOKEN :content-type :json}})
+(def test-map {:from (env :from-email)
+               :to (env :to-email)
+               :subject "From the Repl"
+               :message "Wowzas"})
+
+(defn test-request
+  []
+  (let [url "https://api.sendgrid.com/v3/templates"]
+    (client/get url {:headers {:authorization (env :api-token)
+                               :content-type :json}})))
+
+(defn send-email
+  [{:keys [from to subject message]}]
+  (let [url "https://api.sendgrid.com/v3/mail/send"]
+    (client/post url {:content-type :json
+                      :headers {:authorization (env :api-token)}
+                      :body (json/write-str {:personalizations [{:to [{"email" to}]}]
+                                             :from    {"email" from}
+                                             :subject  subject
+                                             :content [{:type "text/html"
+                                                        :value  message}]})})))
