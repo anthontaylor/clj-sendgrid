@@ -9,4 +9,5 @@
                  [clj-http "3.6.1"]
                  [org.clojure/data.json "0.2.6"]
                  [org.clojure/data.codec "0.1.0"]]
-  :plugins [[lein-environ "1.1.0"]])
+  :plugins [[lein-environ "1.1.0"]
+            [lein-cloverage "1.0.7-SNAPSHOT"]])
