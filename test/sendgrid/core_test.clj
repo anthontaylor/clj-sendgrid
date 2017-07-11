@@ -1,15 +1,13 @@
 (ns sendgrid.core-test
   (:require [clojure.test :refer :all]
-            [sendgrid.core :refer :all]
-            [sendgrid.email :refer [send-email]]
-            [sendgrid.alerts :refer [alerts]]
-            [sendgrid.bounces :refer [bounces]]
-            [sendgrid.blocks :refer [blocks]]
-            [sendgrid.invalid-emails :refer [invalid-emails]]
-            [sendgrid.spam-reports :refer [spam-reports]]
             [clj-http.client :as client]
             [sendgrid.util :refer [url]]
-            [environ.core :refer [env]]))
+            [environ.core :refer [env]]
+            [sendgrid.alerts :refer [alerts]]
+            [sendgrid.email :refer [send-email]]
+            [sendgrid.stats :refer [blocks bounces
+                                    invalid-emails
+                                    spam-reports]]))
 
 (deftest test-env
   "Verify that environ Variables are working"
