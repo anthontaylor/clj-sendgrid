@@ -32,7 +32,7 @@
   (is (= 200 (:status (get-request api-token "spam_reports"))))
   (is (= 200 (:status (get-request api-token "spam_reports" params)))))
 
-#_(deftest test-emails
+(deftest test-emails
   (let [file-content (string->b64-string "Hello World!")]
     (is (= 202 (:status (send-email {:api-token api-token
                                      :from (env :from-email)
