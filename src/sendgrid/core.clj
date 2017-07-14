@@ -1,6 +1,7 @@
 (ns sendgrid.core
   (:require [clj-http.client :as client]
             [clojure.data.json :refer [write-str]]
+            [clojure.data.codec.base64 :as b64]
             [environ.core :refer [env]]))
 
 (def url "https://api.sendgrid.com/v3/")
