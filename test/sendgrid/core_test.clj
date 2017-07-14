@@ -14,23 +14,23 @@
   (is (= false (nil? (env :to-email)))))
 
 (deftest test-alerts
-  (is (= 200 (:status (alerts {:api-token api-token})))))
+  (is (= 200 (:status (get-alerts {:api-token api-token})))))
 
 (deftest test-bounces
-  (is (= 200 (:status (get-request api-token "bounces"))))
-  (is (= 200 (:status (get-request api-token "bounces" params)))))
+  (is (= 200 (:status (get-bounces api-token))))
+  (is (= 200 (:status (get-bounces api-token params)))))
 
 (deftest test-blocks
-  (is (= 200 (:status (get-request api-token "blocks"))))
-  (is (= 200 (:status (get-request api-token "blocks" params)))))
+  (is (= 200 (:status (get-blocks api-token))))
+  (is (= 200 (:status (get-blocks api-token params)))))
 
 (deftest test-invalid-emails
-  (is (= 200 (:status (get-request api-token "invalid_emails"))))
-  (is (= 200 (:status (get-request api-token "invalid_emails" params)))))
+  (is (= 200 (:status (get-invalid-emails api-token))))
+  (is (= 200 (:status (get-invalid-emails api-token params)))))
 
 (deftest test-spam-reports
-  (is (= 200 (:status (get-request api-token "spam_reports"))))
-  (is (= 200 (:status (get-request api-token "spam_reports" params)))))
+  (is (= 200 (:status (get-spam-reports api-token))))
+  (is (= 200 (:status (get-spam-reports api-token params)))))
 
 (deftest test-emails
   (let [file-content (string->b64-string "Hello World!")]

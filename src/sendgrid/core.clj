@@ -9,12 +9,6 @@
 (defn string->b64-string [original]
   (String. (b64/encode (.getBytes original)) "UTF-8"))
 
-(defn alerts
-  [{api-token :api-token}]
-  (client/get (str url "alerts")
-              {:headers {:authorization api-token
-                         :content-type :json}}))
-
 (defn send-email
   [{:keys [from to subject message api-token filename content]}]
   (let [json-body {:personalizations [{:to [{"email" to}]}]
@@ -27,11 +21,44 @@
                  :body (write-str (merge json-body attachments))}]
     (client/post (str url "mail/send") request)))
 
-(defn get-request
-  ([api-token name]
-   (client/get (str url "suppression/" name) {:headers {:authorization api-token
-                                                        :content-type :json}}))
-  ([api-token name params]
-   (client/get (str url "suppression/" name) (merge {:headers {:authorization api-token
-                                                               :content-type :json}}
-                                                    {:query-params params}))))
+(defn get-alerts
+  [{api-token :api-token}]
+  (client/get (str url "alerts")
+              {:headers {:authorization api-token
+                         :content-type :json}}))
+
+(defn get-bounces
+  ([api-token]
+   (client/get (str url "suppression/bounces") {:headers {:authorization api-token
+                                                          :content-type :json}}))
+  ([api-token params]
+   (client/get (str url "suppression/bounces") (merge {:headers {:authorization api-token
+                                                                 :content-type :json}}
+                                                      {:query-params params}))))
+
+(defn get-blocks
+  ([api-token]
+   (client/get (str url "suppression/blocks") {:headers {:authorization api-token
+                                                         :content-type :json}}))
+  ([api-token params]
+   (client/get (str url "suppression/blocks") (merge {:headers {:authorization api-token
+                                                                :content-type :json}}
+                                                     {:query-params params}))))
+
+(defn get-invalid-emails
+  ([api-token]
+   (client/get (str url "suppression/invalid_emails") {:headers {:authorization api-token
+                                                                 :content-type :json}}))
+  ([api-token params]
+   (client/get (str url "suppression/invalid_emails") (merge {:headers {:authorization api-token
+                                                                        :content-type :json}}
+                                                             {:query-params params}))))
+
+(defn get-spam-reports
+  ([api-token]
+   (client/get (str url "suppression/spam_reports") {:headers {:authorization api-token
+                                                               :content-type :json}}))
+  ([api-token params]
+   (client/get (str url "suppression/spam_reports") (merge {:headers {:authorization api-token
+                                                                      :content-type :json}}
+                                                           {:query-params params}))))
