@@ -8,4 +8,4 @@ A Clojure Library for the  Sendgrid API v3
 ## Usage
 clj-sendgrid is available in Clojars. Add this ```:dependency``` to your Leiningen ```project.clj```:
 
-```[clj-sendgrid "0.1.1"]```
+```[clj-sendgrid "0.1.2"]```
