@@ -14,7 +14,7 @@
   (is (= false (nil? (env :to-email)))))
 
 (deftest test-alerts
-  (is (= 200 (:status (get-alerts {:api-token api-token})))))
+  (is (= 200 (:status (get-alerts api-token)))))
 
 (deftest test-bounces
   (is (= 200 (:status (get-bounces api-token))))

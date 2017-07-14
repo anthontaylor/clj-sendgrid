@@ -22,7 +22,7 @@
     (client/post (str url "mail/send") request)))
 
 (defn get-alerts
-  [{api-token :api-token}]
+  [api-token]
   (client/get (str url "alerts")
               {:headers {:authorization api-token
                          :content-type :json}}))
