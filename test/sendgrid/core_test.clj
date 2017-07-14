@@ -1,7 +1,6 @@
 (ns sendgrid.core-test
   (:require [clojure.test :refer :all]
             [clj-http.client :as client]
-            [sendgrid.util :refer [url string->b64-string]]
             [environ.core :refer [env]]
             [clojure.java.io :as io]
             [sendgrid.core :refer :all]))

@@ -4,6 +4,11 @@
             [sendgrid.util :refer [url]]
             [environ.core :refer [env]]))
 
+(def url "https://api.sendgrid.com/v3/")
+
+(defn string->b64-string [original]
+  (String. (b64/encode (.getBytes original)) "UTF-8"))
+
 (defn alerts
   [{api-token :api-token}]
   (client/get (str url "alerts")
