@@ -4,9 +4,7 @@
             [sendgrid.util :refer [url string->b64-string]]
             [environ.core :refer [env]]
             [clojure.java.io :as io]
-            [sendgrid.alerts :refer [alerts]]
-            [sendgrid.email :refer [send-email]]
-            [sendgrid.stats :refer [get-request]]))
+            [sendgrid.core :refer :all]))
 
 (def params {:limit 1})
 (def api-token (env :api-token))
@@ -35,7 +33,7 @@
   (is (= 200 (:status (get-request api-token "spam_reports"))))
   (is (= 200 (:status (get-request api-token "spam_reports" params)))))
 
-(deftest test-emails
+#_(deftest test-emails
   (let [file-content (string->b64-string "Hello World!")]
     (is (= 202 (:status (send-email {:api-token api-token
                                      :from (env :from-email)
