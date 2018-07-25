@@ -40,6 +40,14 @@
                                      :subject "Test Subject"
                                      :message "Test Message"
                                      :filename "Test.txt"
+                                     :content file-content}))))
+
+    (is (= 202 (:status (send-email {:api-token api-token
+                                     :from (env :from-email)
+                                     :to [(env :to-email) (env :to-email-2)]
+                                     :subject "Multiple recipients"
+                                     :message "Test Message"
+                                     :filename "Test.txt"
                                      :content file-content})))))
 
   (is (= 202 (:status (send-email {:api-token api-token
