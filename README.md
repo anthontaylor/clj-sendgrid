@@ -50,6 +50,15 @@ Include in your namespace
              :subject "Test Subject"
              :message "Test Message"})
 ```
+### Email can be sent to multiple recipients
+```
+(send-email {:api-token api-token
+             :from test@test.com
+             :to [abc@abc.com hello@abc.com]
+             :subject "Test Subject"
+             :message "Test Message"})
+```
+
 ### Basic usage of sending an email with file content
 
 ```
@@ -60,6 +69,6 @@ Include in your namespace
              :message "Test Message"
              :filename "Test.txt"
              :content (string->b64-string "Hello World)"})
-```                                     
+```
 ### Sendgrid API
 https://sendgrid.com/docs/API_Reference/Web_API_v3/index.html
